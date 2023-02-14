@@ -1,0 +1,33 @@
+create database banco;
+use banco;
+drop database banco;
+
+drop table receitas;
+drop table despesas;
+drop table usuario;
+create table usuario(
+	id int primary key auto_increment not null,
+    nome varchar(30) not null,
+    nomedologin varchar(30) not null,
+    senha varchar(50) not null,
+    email varchar(50) not null,
+    telefone varchar(11)
+);
+
+create table receitas(
+	id int PRIMARY KEY auto_increment not null,
+    descricao varchar(20),
+    valor int not null,
+	dat varchar(10) not null,
+    id_usuario int not null,
+    FOREIGN KEY (id_usuario) REFERENCES usuario (id)
+);
+
+create table despesas(
+	id int primary key auto_increment not null,
+    nome varchar(30) not null,
+    valor int not null,
+	dat varchar(10) not null,
+    id_usuario int not null,
+    FOREIGN KEY (id_usuario) REFERENCES usuario (id)
+);
